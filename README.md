@@ -1,7 +1,7 @@
 # Fighting-Game-Concept
 A fun coding project that I did over the course of a couple of hours for a job interview. I loved doing this as it gave me a couple of game ideas and allowed me to lean into what i'm good at doing: HTML, CSS, and Javascript.
 
-[https://fighting-game-concept.vercel.app/](You can play this game here)
+[You can play this game here](https://fighting-game-concept.vercel.app/)
 
 # Installation
 This works as a simple webpage. Opening it in a modern browser will result in basic but fun couch co-op game for you.
