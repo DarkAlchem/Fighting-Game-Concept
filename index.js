@@ -168,7 +168,7 @@ window.addEventListener('keydown',(e) =>{
         case 'w':
              player.velocity.y=-jumppow;
         break;
-        case ' ':
+        case 's':
              player.attack();
         break;
     }
