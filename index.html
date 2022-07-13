@@ -1,5 +1,8 @@
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
         <style>
             *{
                 box-sizing: border-box;
@@ -9,16 +12,21 @@
     <body>
         <div style='position:relative;display:inline-block'>
             <div style='position:absolute;display:flex;width:100%; align-items:center;padding:20px;'>
-                <div style='position:relative; background-color:red; height:30px;width:100%'>
-                    <div id='playerHealth' style='position:absolute;background-color:green;height:100%;width:100%;right:0px'></div>
+                <div style='position:relative; background-color:#555555; height:30px;width:100%'>
+                    <div id='playerHealth' style='transition:width .3s,background-color .3s;position:absolute;background-color:#e2cf00;height:100%;width:100%;right:0px'></div>
                 </div>
-                <div style='background-color:blue;height:100px; width:100px;flex-shrink:0'></div>
-                <div style='position:relative;background-color:red; height:30px;width:100%'>
-                    <div id='enemyHealth' style='position:absolute;background-color:green;height:100%;width:100%;left:0px'></div>
+                <div id='timer' style='background-color:black;height:60px; width:100px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:"Oswald",sans-serif;font-size:32px;color:#ffffff;'>
+                    10
+                </div>
+                <div style='position:relative;background-color:#555555; height:30px;width:100%'>
+                    <div id='enemyHealth' style='transition:width .3s,background-color .3s;position:absolute;background-color:#e2cf00;height:100%;width:100%;left:0px'></div>
                 </div>
             </div>
+            <div id='roundtext' style="position:absolute;top:0;right:0;left:0;bottom:0;font-family:'Oswald',sans-serif;font-size:60px;font-weight:700;text-transform:uppercase;color:#ffffff;display:none;align-items:center;justify-content:center">Tie</div>
             <canvas></canvas>
         <div>
+        <script src="/js/utils.js"></script>
+        <script src="/js/classes.js"></script>
         <script src='index.js'></script>
     </body>
 </html>
