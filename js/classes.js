@@ -73,6 +73,7 @@ class Fighter extends Sprite{
         this.framesHold = 5;
         this.sprites=sprites;
         this.feint=false;
+        this.iframes=0;
         this.attackBox = {
             position:{
                 x: this.position.x,
@@ -87,8 +88,6 @@ class Fighter extends Sprite{
             sprites[sprite].image = new Image()
             sprites[sprite].image.src = sprites[sprite].imageSrc;
         }
-
-        console.log(this.sprites)
     }
 
     switchSprite(sprite){
@@ -178,18 +177,19 @@ class Fighter extends Sprite{
             this.position.y += this.velocity.y;
             if(!this.isAttacking)this.position.x += this.velocity.x;
             
-
-            //c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
-            
             if (this.position.y + this.height + this.velocity.y >= canvas.height-85){
                 this.velocity.y=0;
                 this.position.y=342;
             } else this.velocity.y += gravity;
         }
+        if(this.iframes>0) this.iframes--;
     }
 
     takeHit(){
-        this.health-=50;
+        if (this.iframes==0){
+            this.iframes=10;
+            this.health-=50;
+        }
         if (this.health > 0){
             this.switchSprite('damaged');
         } else {

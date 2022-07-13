@@ -164,7 +164,6 @@ function checkHPBarColor({selector,ratio}){
     if (rat < 100 && rat > 50) element.style.backgroundColor='#00d50f';
     if (rat <= 50 && rat >= 25) element.style.backgroundColor='#e7880d';
     if (rat < 25) element.style.backgroundColor='#c80009';
-    console.log(element,element.style.backgroundColor,rat)
 }
 
 function updateLoop(){
@@ -174,7 +173,7 @@ function updateLoop(){
 
     background.update();
     shop.update();
-    c.fillStyle='rgba(255,255,255,.15)'
+    c.fillStyle='rgba(255,255,255,.2)'
     c.fillRect(0,0,canvas.width,canvas.height)
     player.update(hitstop);
     enemy.update(hitstop);
@@ -216,15 +215,19 @@ function updateLoop(){
 
     //Detect for Enemy Collision
     if (detectCollision({rectangleA:player,rectangleB:enemy}) && player.isAttacking && player.framesCurrent===4){
-        enemy.takeHit();
-        hitstop=4;
+        if(hitstop==0){
+            enemy.takeHit();
+            hitstop=4;
+        }
         checkHPBarColor({selector:'#enemyHealth', ratio:enemy.health / enemy.healthMax});
         player.isAttacking=false;
     }
 
-    if (detectCollision({rectangleA:enemy,rectangleB:player}) && enemy.isAttacking){
-        player.takeHit();
-        hitstop=4;
+    if (detectCollision({rectangleA:enemy,rectangleB:player}) && enemy.isAttacking && enemy.framesCurrent===1){
+        if(hitstop==0){
+            player.takeHit();
+            hitstop=4;
+        }
         checkHPBarColor({selector:'#playerHealth', ratio:player.health / player.healthMax }); 
         enemy.isAttacking=false;
     }
@@ -267,7 +270,6 @@ window.addEventListener('keydown',(e) =>{
     if (!enemy.feint){
         switch (e.key){ 
             case 'ArrowRight':
-                console.log('Enemy Right')
                 keys.ArrowRight.pressed=true
                 enemy.lastKey='ArrowRight';
             break;
